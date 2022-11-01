@@ -1,4 +1,4 @@
-# How to programatically connect to a RTSP camera URL remotely with python-opencv
+# How to programatically connect to a RTSP camera URL remotely with OpenCV-Python
 
 ##### Accessing a RTSP cam stream from a remote site with ````opencv````, requires two basic computers, e.g. rpi3s, one in each LAN.
 
@@ -48,7 +48,7 @@ sudo iptables -t nat -A POSTROUTING -o wlan0 -j MASQUERADE
 
 ````
 pip install numpy
-pip install python-opencv
+pip install opencv-python
 ````
 
 ##### Running ```` open_uri.py```` should connect to the ipcam on home LAN and open a display window in the remote rpi. **Note:** Connection to remote rpi should be made with X forwarding enabled to access the display say with ````ssh -XY rpi3-remote```` (if its running in headless mode).
