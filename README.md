@@ -52,5 +52,7 @@ pip install numpy
 pip install opencv-python
 ````
 
-##### Running ```` open_uri.py```` with your own camera rtsp://url edited in should connect to the ipcam on home LAN and open a display window in the remote rpi. **Note:** If running in headless mode, connection to remote rpi should be made with X forwarding enabled to access the display say with ````ssh -XY rpi3-remote````.
+##### Running ```` open_uri.py```` with your own camera rtsp://url edited in should connect to the ipcam on home LAN and open a display window in the remote rpi. 
+
+##### **Note:** If running in headless mode, connection to remote rpi should be made with X forwarding enabled to access the display say with ````ssh -XY rpi3-remote````.
 
