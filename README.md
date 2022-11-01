@@ -47,6 +47,7 @@ sudo iptables -t nat -A POSTROUTING -o wlan0 -j MASQUERADE
 ##### Install the following ````python```` packages if not previously installed on remote rpi.
 
 ````
+pip install --upgrade pip
 pip install numpy
 pip install opencv-python
 ````
