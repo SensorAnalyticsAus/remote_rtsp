@@ -30,7 +30,7 @@ sudo /usr/sbin/pppd updetach connect-delay 60000 noauth pty\
 ````fwdonremote````
 ````
 #!/bin/bash
-#start ssh vpn first (vpn-s) run this script on remote computer
+#start ssh vpn first (vpn-s) run this script on remote computer.
 sudo ip r add 192.168.1.0/24 dev ppp0
 sudo iptables -t nat -A POSTROUTING -o wlan0 -j MASQUERADE
 ````
