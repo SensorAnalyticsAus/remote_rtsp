@@ -12,14 +12,14 @@ sudo apt update
 sudo apt upgrade
 sudo apt install ppp
 ````
-### IP Forwarding
+### Enable IP Forwarding
 Check IP forwarding is enabled on both the rpis:
 ````
 sysctl net.ipv4.ip_forward
 net.ipv4.ip_forward = 1
 ````
 If the value is '0' then:
-edit `/etc/sysctl.conf`. Search for a line containing the entry `#net.ipv4.ip_forward=1`, and remove the # at the beginning of the line. Save the file nd run the `sysctl` command to enable the edited setting:
+edit `/etc/sysctl.conf`. Search for a line containing the entry `#net.ipv4.ip_forward=1`, and remove the # at the beginning of the line. Save the file and run the `sysctl` command to enable the edited setting:
 ````
 sudo sysctl -p /etc/sysctl.conf
 ````
