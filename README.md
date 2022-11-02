@@ -1,12 +1,12 @@
 # How to programatically connect to a RTSP camera URL remotely with OpenCV-Python
 
-##### Accessing a RTSP cam stream from a remote site with ````opencv````, requires two basic computers, e.g. rpi3s, one in each LAN.
+Accessing a RTSP cam stream from a remote site with ````opencv````, requires two basic computers, e.g. rpi3s, one in each LAN.
 
 [Remote RTSP LAN access setup](https://www.sensoranalytics.com.au/misc/Sof.jpg)
 
-##### A serial vpn link is setup between the two rpis with the following commands on the remote rpi.
+A serial vpn link is setup between the two rpis with the following commands on the remote rpi.
 
-#### Install ````ppp```` package on both the rpis:
+Install ````ppp```` package on both the rpis:
 ````
 sudo apt update
 sudo apt upgrade
@@ -44,7 +44,7 @@ sudo ip route add 192.168.0.0/24 dev ppp0
 sudo iptables -t nat -A POSTROUTING -o wlan0 -j MASQUERADE
 ````
 
-##### Install the following ````python```` packages if not previously installed on remote rpi.
+Install the following ````python```` packages if not previously installed on remote rpi.
 
 ````
 pip install --upgrade pip
@@ -52,7 +52,16 @@ pip install numpy
 pip install opencv-python
 ````
 
-##### Running ```` open_uri.py```` with your own camera rtsp://url edited in should connect to the ipcam on home LAN and open a display window in the remote rpi. 
+Running ```` open_uri.py```` with your own camera rtsp://url edited in should connect to the ipcam on home LAN and open a display window in the remote rpi. 
 
-##### **Note:** If remote rpi is running in headless mode, connection to it should be made with X forwarding enabled to access the display say with ````ssh -XY rpi3-remote````.
+**Note:** If remote rpi is running in headless mode, connection to it should be made with X forwarding enabled to access the display say with ````ssh -XY rpi3-remote````.
+
+### Troubleshooting
+````vpn-s```` requires the ````ssh```` login from remote rpi to local rpi is passwordless with no keyboard interaction. The sudo command on local rpi is also passwordless with no keyboard interacion.
+
+````fwdon```` scripts require the ````iptables```` on both the rpis are in their default setting before use, which can be set as:
+```` 
+sudo iptables -F
+sudo -t nat -F
+````
 
