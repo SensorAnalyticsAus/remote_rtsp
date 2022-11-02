@@ -77,4 +77,4 @@ Running ```` open_uri.py```` with your own camera rtsp://url edited in should co
 sudo iptables -F
 sudo -t nat -F
 ````
-Check if your rpis have ````ufw````, check if it's active and blocking network traffic in some way.
+Check if your rpis have ````ufw````, check if it's active. If so, it may be blocking network traffic in some way.
