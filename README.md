@@ -12,6 +12,17 @@ sudo apt update
 sudo apt upgrade
 sudo apt install ppp
 ````
+### IP Forwarding
+Check IP forwarding is enabled on both the rpis:
+````
+sysctl net.ipv4.ip_forward
+net.ipv4.ip_forward = 1
+````
+If the value is '0' then:
+edit `/etc/sysctl.conf`. Search for a line containing the entry `#net.ipv4.ip_forward=1`, and remove the # at the beginning of the line. Save the file nd run the `sysctl` command to enable the edited setting:
+````
+sudo sysctl -p /etc/sysctl.conf
+````
 
 ````vpn-s````
 
@@ -66,4 +77,4 @@ Running ```` open_uri.py```` with your own camera rtsp://url edited in should co
 sudo iptables -F
 sudo -t nat -F
 ````
-
+Check if your rpis have ````ufw````, check if it's active and blocking network traffic in some way.
