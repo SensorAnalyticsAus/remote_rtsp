@@ -72,7 +72,7 @@ Running ```` open_uri.py```` with your own camera rtsp://url edited in should co
 **Note:** If remote rpi is running in headless mode, connection to it should be made with X forwarding enabled to access the display say with ````ssh -XY rpi3-remote````.
 
 ### Troubleshooting
-````vpn-s```` requires the ````ssh```` login from remote rpi to local rpi is passwordless with no keyboard interaction. The ````sudo```` command on local rpi is also passwordless with no keyboard interacion.
+````vpn-s```` requires the ````ssh```` login from remote rpi to local rpi is passwordless with no keyboard interaction. The ````sudo```` command on both the rpis is also passwordless with no keyboard interacion.
 
 ````fwdon```` scripts require the ````iptables```` on both the rpis are in their default setting before use, which can be set as:
 ```` 
