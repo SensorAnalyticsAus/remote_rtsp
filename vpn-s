@@ -1,9 +1,7 @@
 #/bin/bash
 # vpn-s script sets up a point-to-point vpn between remote computer 
-# and home LAN. The usrname should be usrname of a computer on home
-# LAN with sudo access.
-# Run this script on remote computer
+# and local computer on the home LAN. 
+# Run this script on the remote computer. Tested on Raspbian and Debian10.
 sudo /usr/sbin/pppd updetach connect-delay 60000 noauth pty\
- "sudo -u usrname /usr/bin/ssh -t -t home_router_ip -l usrname\
-  -p home_router_port_no_fwd_to_rpi\ 
+ "sudo -u usrname_remote /usr/bin/ssh -t -t usrname@home_router_ip -p home_router_port_no_fwd_to_rpi\ 
   sudo /usr/sbin/pppd noauth 192.168.186.2:192.168.186.1"
