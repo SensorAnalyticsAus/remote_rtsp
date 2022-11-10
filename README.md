@@ -29,12 +29,10 @@ sudo sysctl -p /etc/sysctl.conf
 ````
 #/bin/bash
 # vpn-s script sets up a point-to-point vpn between remote computer 
-# and home LAN. The usrname should be usrname of a computer on home
-# LAN with sudo access.
-# Run this script on remote computer
+# and local computer on the home LAN. 
+# Run this script on the remote computer. Tested on Raspbian and Debian10.
 sudo /usr/sbin/pppd updetach connect-delay 60000 noauth pty\
- "sudo -u usrname /usr/bin/ssh -t -t home_router_ip -l usrname\
-  -p home_router_port_no_fwd_to_ipcam\
+ "sudo -u usrname_remote /usr/bin/ssh -t -t usrname@home_router_ip -p home_router_port_no_fwd_to_rpi\
   sudo /usr/sbin/pppd noauth 192.168.186.2:192.168.186.1"
 ````
 
@@ -43,6 +41,8 @@ sudo /usr/sbin/pppd updetach connect-delay 60000 noauth pty\
 #!/bin/bash
 # Edit in below your actual local, i.e. home, LAN address (as provided by ISP).
 #start ssh vpn first (vpn-s) then run this script on remote computer.
+sudo iptables -F
+sudo iptables -t nat -F
 sudo ip r add 192.168.1.0/24 dev ppp0
 sudo iptables -t nat -A POSTROUTING -o wlan0 -j MASQUERADE
 ````
@@ -53,6 +53,8 @@ sudo iptables -t nat -A POSTROUTING -o wlan0 -j MASQUERADE
 # Edit in below your actual remote LAN address (as provided by ISP).
 #After ssh vpn has been established by remote run this script here on
 #the local computer.
+sudo iptables -F
+sudo iptables -t nat -F
 sudo ip route add 192.168.0.0/24 dev ppp0
 sudo iptables -t nat -A POSTROUTING -o wlan0 -j MASQUERADE
 ````
